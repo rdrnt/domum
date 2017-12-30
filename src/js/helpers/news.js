@@ -15,11 +15,9 @@ const NewsHelper = {
         .then (results => {
             return results.json();
         }).then(data => {
-            
             const articles = data.articles.map((article) => {
                 return new Article(article.title, article.description, article.urlToImage);
-            })
-            
+            });
             callback(articles);
         });
     },

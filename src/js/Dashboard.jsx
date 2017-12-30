@@ -10,7 +10,7 @@ class Dashboard extends Component {
         this.state = {
             news: [],
         };
-        
+
         setInterval(() => {
             NewsHelper.get((articles) => {
                 this.setState({
@@ -18,14 +18,13 @@ class Dashboard extends Component {
                 });
             });
         }, 5000);
+
     };
 
     render() {
         return (
             <div>
-                <News 
-                    articles={this.state.news}
-                />
+                <News />
             </div>
         )
     }

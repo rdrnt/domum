@@ -1,24 +1,37 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 import NewsHelper from '../helpers/news';
 
-const NewsArticle = (props) => (
-    <div>
-        <h2>{props.article.title}</h2>
-        <p>{props.article.description}</p>
-    </div>
-);
+class News extends React.Component {
+    constructor(props) {
+        super(props);
+        console.log('The props are', props);
 
-const News = (props) => {
+        this.state = {
+            articles: [],
+        };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        console.log('Next props are', nextProps);
+    }
+
+    render() {
         return (
             <div className="news">
-               {props.articles.map((obj, index) => 
-                    <NewsArticle 
-                        key={index} 
-                        article={obj}
-                    /> 
-                )}
+                hey
             </div>
         )
+    }
 }
 
-export default News;
+function mapStateToProps(state) {
+    console.log('The state form ppq', state);
+    return {
+        articles: state.common.articles,
+    }
+}
+
+export default connect(mapStateToProps)(News);
