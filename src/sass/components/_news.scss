@@ -1,6 +1,17 @@
 .news {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .news-headline {
     
+}
+
+.news__article {
+  height: 50px;
+  width: 100%;
+  background-color: aqua;
+  border: 1px solid black;
 }

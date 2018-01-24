@@ -7,28 +7,32 @@ import NewsHelper from '../helpers/news';
 class News extends React.Component {
     constructor(props) {
         super(props);
-        console.log('The props are', props);
+        console.log('News: The props are', props);
 
         this.state = {
-            articles: [],
+            articles: props.articles,
         };
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('Next props are', nextProps);
+        console.log('News: Next props are', nextProps);
     }
-
     render() {
+        console.log('News: The state is ', this.state);
         return (
             <div className="news">
-                hey
+                <div className="news__article" />
+                <div className="news__article" />
+                <div className="news__article" />
+                <div className="news__article" />
+                <div className="news__article" />
             </div>
         )
     }
 }
 
 function mapStateToProps(state) {
-    console.log('The state form ppq', state);
+    console.log('News: mapStateToProps', state);
     return {
         articles: state.common.articles,
     }

@@ -1,6 +1,6 @@
 function common(state = [], action) {
   switch (action.type) {
-    case 'FETCH_NEWS': {
+    case 'UPDATE_NEWS': {
       return { ...state, articles: action.object };
     }
     default: {
