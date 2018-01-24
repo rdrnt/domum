@@ -6,11 +6,13 @@ const commonActions = {
     object,
   }),
 
-  getNews: () => {
-    NewsHelper.get(articles => {
-      
-    });
-  },
+  getNews: () => (
+    (dispatch) => {
+      NewsHelper.get(articles => {
+        dispatch(commonActions.updateNews(articles));
+      });
+    }
+  )
 };
 
 export default commonActions;

@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 
 import News from './components/news';
 
-import NewsHelper from './helpers/news';
-
+import { commonActions } from './actions';
 import store from './store';
 
 class Dashboard extends Component {
@@ -13,22 +12,16 @@ class Dashboard extends Component {
         this.state = {
             news: [],
         };
-
-        setInterval(() => {
-            NewsHelper.get((articles) => {
-                this.setState({
-                    news: articles,
-                });
-            });
-        }, 5000);
-
     };
 
+    componentDidMount() {
+        store.dispatch(commonActions.getNews());
+    }
     render() {
         const { news } = this.state;
         
         return (
-            <div>
+            <div className="dashboard">
                 <News articles={news}/>
             </div>
         )
