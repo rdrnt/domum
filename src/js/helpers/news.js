@@ -1,6 +1,4 @@
-// This file is used to fetch content from reddit
-// At some point we'll use the API instead of scraping, but /shrug
-import PrivateKeys from './privateKeys';
+// Helper class for getting articles
 
 class Article {
     constructor(title, desc, thumbnail) {
@@ -10,8 +8,9 @@ class Article {
     }
 }
 const NewsHelper = {
+    API_KEY: process.env.REACT_APP_NEWS_API_KEY,
     get: (callback) => {
-        fetch(`https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=${PrivateKeys.news}`)
+        fetch(`https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=${NewsHelper.API_KEY}`)
         .then (results => {
             return results.json();
         }).then(data => {
