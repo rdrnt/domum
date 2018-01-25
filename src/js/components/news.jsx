@@ -17,7 +17,7 @@ const NewsArticle = (props) => {
 class News extends React.Component {
     constructor(props) {
         super(props);
-        console.log(process.env);
+
         this.state = {
             articles: props.articles,
         };
