@@ -4,20 +4,19 @@ class WeatherRepresentation {
     this.condition = weatherJson.weather.description;
     this.celsius = weatherJson.main.temp;
     this.sun = {
-      rise: new Date(weatherJson.sys.sunrise).getTime(),
-      set: new Date(weatherJson.sys.sunset).getTime(),
-    }
+      rise: new Date(weatherJson.sys.sunrise * 1000),
+      set: new Date(weatherJson.sys.sunset * 1000),
+    };
   }
 }
 
 const WeatherHelper = {
-  get:(callback) => {
+  get: (callback) => {
     fetch('https://api.openweathermap.org/data/2.5/weather?q=Pickering&units=metric&appid=cd1efab000e8575fc595221a8d421af2', {
       method: 'GET',
     })
-      .then (results => {
-        return results.json();
-      }).then(json => {
+      .then(results => results.json())
+      .then((json) => {
         callback(new WeatherRepresentation(json));
       });
   },

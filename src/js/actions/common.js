@@ -9,10 +9,10 @@ const commonActions = {
 
   getNews: () => (
     (dispatch) => {
-      NewsHelper.get(articles => {
+      NewsHelper.get((articles) => {
         // We want to remove 5 articles from the articles we'll display
-        articles = articles.filter((article, index) => index < 5);
-        dispatch(commonActions.updateNews(articles));
+        const filteredArticles = articles.filter((article, index) => index < 5);
+        dispatch(commonActions.updateNews(filteredArticles));
       });
     }
   ),
@@ -24,11 +24,11 @@ const commonActions = {
 
   getWeather: () => (
     (dispatch) => {
-      WeatherHelper.get(weather => {
+      WeatherHelper.get((weather) => {
         dispatch(commonActions.updateWeather(weather));
       });
     }
-  )
+  ),
 
 };
 
