@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import News from './components/news';
+import { News, Weather } from './components';
 
 import { commonActions } from './actions';
 import store from './store';
@@ -10,7 +12,8 @@ class Dashboard extends Component {
     super(props);
 
     this.state = {
-      news: [],
+      articles: [],
+      weather: {},
     };
   }
 
@@ -19,15 +22,39 @@ class Dashboard extends Component {
     store.dispatch(commonActions.getWeather());
   }
 
+  componentWillReceiveProps(nextProps) {
+    // console.log('nextProps', nextProps);
+    this.setState({
+      articles: nextProps.articles,
+      weather: nextProps.weather,
+    });
+  }
+
   render() {
-    const { news } = this.state;
+    const { articles, weather } = this.state;
 
     return (
       <div className="dashboard">
-        <News articles={news} />
+        <News articles={articles} />
+        <Weather weather={weather} />
       </div>
     );
   }
 }
 
-export default Dashboard;
+function mapStateToProps(state) {
+  // console.log('state', { ...state.common } );
+  return { ...state.common };
+}
+
+Dashboard.propTypes = {
+  weather: PropTypes.objectOf(PropTypes.shape),
+  articles: PropTypes.arrayOf(PropTypes.shape),
+};
+
+Dashboard.defaultProps = {
+  weather: {},
+  articles: [],
+};
+
+export default connect(mapStateToProps)(Dashboard);

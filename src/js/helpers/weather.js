@@ -1,7 +1,10 @@
 class WeatherRepresentation {
   constructor(weatherJson) {
     this.city = weatherJson.name;
-    this.condition = weatherJson.weather.description;
+    this.condition = {
+      main: weatherJson.weather[0].main,
+      extra: weatherJson.weather[0].description,
+    };
     this.celsius = weatherJson.main.temp;
     this.sun = {
       rise: new Date(weatherJson.sys.sunrise * 1000),

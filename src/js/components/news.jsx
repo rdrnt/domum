@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 const NewsArticle = (props) => {
@@ -12,26 +11,11 @@ const NewsArticle = (props) => {
   );
 };
 
-class News extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      articles: props.articles,
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    // console.log('News: Next props are', nextProps);
-    this.setState({
-      articles: nextProps.articles,
-    });
-  }
-  render() {
-    // console.log('News: The state is ', this.state);
-    const { articles } = this.state;
-    return (
-      <div className="news">
+const News = (props) => {
+  const { articles } = props;
+  return (
+    <div className="news">
+      <div className="container">
         { articles.map(article => (
           <NewsArticle
             title={article.title}
@@ -40,25 +24,17 @@ class News extends React.Component {
           />
         ))}
       </div>
-    );
-  }
-}
-
-function mapStateToProps(state) {
-  // console.log('News: mapStateToProps', state);
-  return {
-    articles: state.common.articles,
-  };
-}
+    </div>
+  );
+};
 
 News.propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    articles: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  articles: PropTypes.arrayOf(PropTypes.shape).isRequired,
 };
 
 NewsArticle.propTypes = {
-    title: PropTypes.string.isRequired,
-    thumbnail: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  thumbnail: PropTypes.string.isRequired,
 };
 
-export default connect(mapStateToProps)(News);
+export default News;

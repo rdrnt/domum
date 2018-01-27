@@ -1,5 +1,23 @@
+$susy: (
+  columns: 12,
+  gutters: 2/3,
+);
+
+
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  color: #263238;
+
+}
+
+.container {
+  @include container(1354px);
+  width: 100%;
+  padding: 0 20px;
+  position: relative;
+  margin: 0 auto;
+  @include span(10);
+  @include squish(1);
 }
