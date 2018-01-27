@@ -8,6 +8,7 @@ import rootReducer from './reducers';
 const defaultState = {
   common: {
     articles: [],
+    weather: {},
   }
 };
 

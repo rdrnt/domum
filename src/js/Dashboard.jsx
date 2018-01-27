@@ -16,6 +16,7 @@ class Dashboard extends Component {
 
     componentDidMount() {
         store.dispatch(commonActions.getNews());
+        store.dispatch(commonActions.getWeather());
     }
     render() {
         const { news } = this.state;

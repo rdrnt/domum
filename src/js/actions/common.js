@@ -1,4 +1,5 @@
 import NewsHelper from '../helpers/news';
+import WeatherHelper from '../helpers/weather';
 
 const commonActions = {
   updateNews: object => ({
@@ -14,7 +15,21 @@ const commonActions = {
         dispatch(commonActions.updateNews(articles));
       });
     }
+  ),
+
+  updateWeather: object => ({
+    type: 'UPDATE_WEATHER',
+    object,
+  }),
+
+  getWeather: () => (
+    (dispatch) => {
+      WeatherHelper.get(weather => {
+        dispatch(commonActions.updateWeather(weather));
+      });
+    }
   )
+
 };
 
 export default commonActions;

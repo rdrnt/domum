@@ -3,6 +3,9 @@ function common(state = [], action) {
     case 'UPDATE_NEWS': {
       return { ...state, articles: action.object };
     }
+    case 'UPDATE_WEATHER': {
+      return { ...state, weather: action.object };
+    }
     default: {
       return state;
     }
