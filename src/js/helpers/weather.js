@@ -15,12 +15,15 @@ class WeatherRepresentation {
 
 const WeatherHelper = {
   get: (callback) => {
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=Pickering&units=metric&appid=cd1efab000e8575fc595221a8d421af2', {
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=Pickering&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`, {
       method: 'GET',
     })
       .then(results => results.json())
       .then((json) => {
         callback(new WeatherRepresentation(json));
+      })
+      .catch((error) => {
+        console.log('Error fetching weather', error);
       });
   },
 };

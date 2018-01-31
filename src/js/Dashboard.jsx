@@ -17,7 +17,7 @@ class Dashboard extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     store.dispatch(commonActions.getNews());
     store.dispatch(commonActions.getWeather());
   }
@@ -32,7 +32,6 @@ class Dashboard extends Component {
 
   render() {
     const { articles, weather } = this.state;
-
     return (
       <div className="dashboard">
         <News articles={articles} />

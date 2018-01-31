@@ -1,5 +1,4 @@
 import { createStore, applyMiddleware } from 'redux';
-import { routerMiddleware } from 'react-router-redux'
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 
@@ -9,7 +8,7 @@ const defaultState = {
   common: {
     articles: [],
     weather: {},
-  }
+  },
 };
 
 const store = createStore(rootReducer, defaultState, composeWithDevTools(applyMiddleware(thunk)));

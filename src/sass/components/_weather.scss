@@ -10,9 +10,18 @@
   flex-direction: column;
   width: 75%;
   margin: 0 auto;
+  text-align: center;
 
+  .location {
+    font-size: 32px;
+    font-weight: bold;
+  }
   .condition {
     font-size: 24px;
-    text-align: center;
+    font-weight: 500;
+    &__extra {
+      font-size: 16px;
+      font-weight: normal;
+    }
   }
 }
