@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Dashboard from './js/Dashboard';
 import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
+
+import Dashboard from './js/containers/Dashboard';
 
 import store from './js/store';
 

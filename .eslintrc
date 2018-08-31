@@ -3,7 +3,7 @@
     "browser": true,
     "es6": true
   },
-  "extends": "airbnb",
+  "extends": ["airbnb","plugin:prettier/recommended"],
   "plugins": [
       "react",
       "jsx-a11y",

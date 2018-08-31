@@ -2,39 +2,36 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { News, Weather } from './components';
+import { Weather } from '../components';
 
-import { commonActions } from './actions';
-import store from './store';
+import { weatherActions } from '../actions';
+import store from '../store';
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      articles: [],
       weather: {},
     };
   }
 
-  componentWillMount() {
-    store.dispatch(commonActions.getNews());
-    store.dispatch(commonActions.getWeather());
+  componentDidMount() {
+    store.dispatch(weatherActions.fetchWeather());
   }
 
   componentWillReceiveProps(nextProps) {
     // console.log('nextProps', nextProps);
     this.setState({
-      articles: nextProps.articles,
       weather: nextProps.weather,
     });
   }
 
   render() {
-    const { articles, weather } = this.state;
+    const { weather } = this.state;
+    console.log('Weather in state', weather);
     return (
       <div className="dashboard">
-        <News articles={articles} />
         <Weather weather={weather} />
       </div>
     );
@@ -42,18 +39,18 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps(state) {
-  // console.log('state', { ...state.common } );
-  return { ...state.common };
+  // console.log('state', state);
+  return { ...state };
 }
 
+/*
 Dashboard.propTypes = {
   weather: PropTypes.objectOf(PropTypes.shape),
-  articles: PropTypes.arrayOf(PropTypes.shape),
 };
 
 Dashboard.defaultProps = {
   weather: {},
-  articles: [],
 };
+*/
 
 export default connect(mapStateToProps)(Dashboard);

@@ -7,10 +7,17 @@ import rootReducer from './reducers';
 const defaultState = {
   common: {
     articles: [],
-    weather: {},
+  },
+  weather: {
+    isFetching: false,
+    info: {},
   },
 };
 
-const store = createStore(rootReducer, defaultState, composeWithDevTools(applyMiddleware(thunk)));
+const store = createStore(
+  rootReducer,
+  defaultState,
+  composeWithDevTools(applyMiddleware(thunk))
+);
 
 export default store;
